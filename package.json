@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Cheez0id/Employee_CMS#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3",
