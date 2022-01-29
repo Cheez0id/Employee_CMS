@@ -29,6 +29,11 @@ const companyQ = () =>{
   console.table(results);
 });
 }
+const rolesQ = () =>{
+  con_db.query(`SELECT * FROM ${employees}, ${roles}, ${departments}`, function (err, results) {
+  console.table(results);
+});
+}
 
 //for debugging
 const hello = () => {console.log("work in progress!")}
@@ -60,23 +65,30 @@ const viewChoice = [
 		type: "list",
 		name: "view",
 		message: "What do you want to view?",
-    choices: ["View All Roles", "View All Employees", "View all Departments"],
+    choices: ["View All", "View All Roles", "View All Employees", "View all Departments"],
 	}
 ]
-
 
 const init = () =>{
   inquirer.prompt(firstChoice).then(
     (choice) =>{
       if (choice.first === "View" || "Add" || "Update"){
         inquirer.prompt(viewChoice).then((choice) =>{
-          if (choice.view === "View All Roles"){
+          if (choice.view === "View All"){
                   companyQ();
                   (inquirer.prompt(continue_app)).then((choice) =>{
                   if (choice.continue === "continue"){init()
                   }
                   else {console.log("use Ctrl+C return to exit!")}
-                  })}})}})}
+                  })}
+        if (choice.view === "View All Roles"){
+                  rolesQ();
+                  (inquirer.prompt(continue_app)).then((choice) =>{
+                  if (choice.continue === "continue"){init()
+                  }
+                  else {console.log("use Ctrl+C return to exit!")}
+                  })}
+})}})}
     
 
 //       else if (choice.first === "Add"){
