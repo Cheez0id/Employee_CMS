@@ -19,21 +19,25 @@ con_db.connect((err) => {
   console.log('mysql is connected!')
 })
 
-const employees = "employees";
-const roles = "roles";
-const departments = "departments";
+const company = ["employees", "roles", "departments"]
 
 //run mysql database query 
 const companyQ = () =>{
-  con_db.query(`SELECT * FROM ${employees}, ${roles}, ${departments}`, function (err, results) {
+  con_db.query(`SELECT * FROM ${company[0]}, ${company[1]}, ${company[2]}`, function (err, results) {
   console.table(results);
 });
 }
-const rolesQ = () =>{
-  con_db.query(`SELECT * FROM ${roles}`, function (err, results) {
+const erdQ = () =>{
+  con_db.query(`SELECT * FROM ${company[1]}`, function (err, results) {
   console.table(results);
 });
 }
+
+ask = ((choice) =>{
+  if (choice.continue === "continue"){init()
+  }
+  else {console.log("use Ctrl+C return to exit!")}
+  });
 
 //for debugging
 const hello = () => {console.log("work in progress!")}
@@ -72,22 +76,16 @@ const viewChoice = [
 const init = () =>{
   inquirer.prompt(firstChoice).then(
     (choice) =>{
+      const company = ["Employees", "Roles", "Departments"]
       if (choice.first === "View" || "Add" || "Update"){
         inquirer.prompt(viewChoice).then((choice) =>{
           if (choice.view === "View All"){
                   companyQ();
-                  (inquirer.prompt(continue_app)).then((choice) =>{
-                  if (choice.continue === "continue"){init()
-                  }
-                  else {console.log("use Ctrl+C return to exit!")}
-                  })}
-        else if (choice.view === "View All Roles"){
-                  rolesQ();
-                  (inquirer.prompt(continue_app)).then((choice) =>{
-                  if (choice.continue === "continue"){init()
-                  }
-                  else {console.log("use Ctrl+C return to exit!")}
-                  })}
+                  (inquirer.prompt(continue_app)).then(ask)}
+        else if (choice.view === `View All ${company[1]}`){       
+            erdQ();
+//user restarts app or is prompted to exit
+                  (inquirer.prompt(continue_app)).then(ask)}
 })}})}
     
 
