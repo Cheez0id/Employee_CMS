@@ -1,15 +1,14 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
-const console_t = require("console.table");
-const sequelize = require("sequelize");
-const express = require('express');
-const app = express();
+
+
+//!!TODO: MARY, READ ME FIRST HONEY! you need to make your mysql queries log in the console silly; then they can work with inquirer. you don't need anything to go to localhost?!?
 
 //from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
 const hello = () => {console.log("work in progress!")}
 
 // THIS IS JUST FOR REFERENCE! 
 //console.table(["roles", "employees", "departments"]);
+
 
 //todo: wanted to initialize with const start = () => {}
 
