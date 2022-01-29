@@ -7,7 +7,7 @@ VALUES (01, "customer service"),
 INSERT INTO roles (id, title, department, salary)
 VALUES (010, "customer rep", 01, 14.00),
        (020, "processor", 02, 08.00),
-       (030, "sales rep", 03, 1000.00 ),
+       (030, "sales rep", 03, 10.00 ),
        (040, "qa engineer", 04, 09.00);
 
 INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
