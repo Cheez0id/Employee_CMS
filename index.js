@@ -19,16 +19,11 @@ con_db.connect((err) => {
   console.log('mysql is connected!')
 })
 
-const company = ["employees", "roles", "departments"]
+const companyTables = ["employees", "roles", "departments"]
 
 //run mysql database query 
 const companyQ = () =>{
-  con_db.query(`SELECT * FROM ${company[0]}, ${company[1]}, ${company[2]}`, function (err, results) {
-  console.table(results);
-});
-}
-const erdQ = () =>{
-  con_db.query(`SELECT * FROM ${company[1]}`, function (err, results) {
+  con_db.query(`SELECT * FROM ${companyTables[0]}, ${companyTables[1]}, ${companyTables[2]}`, function (err, results) {
   console.table(results);
 });
 }
@@ -77,12 +72,18 @@ const init = () =>{
   inquirer.prompt(firstChoice).then(
     (choice) =>{
       const company = ["Employees", "Roles", "Departments"]
+      //TODO: let the ${} be the = the selection from the user
+const erdQ = () =>{
+  con_db.query(`SELECT * FROM ${companyTables[0]}`, function (err, results) {
+  console.table(results);
+});
+};
       if (choice.first === "View" || "Add" || "Update"){
         inquirer.prompt(viewChoice).then((choice) =>{
           if (choice.view === "View All"){
                   companyQ();
                   (inquirer.prompt(continue_app)).then(ask)}
-        else if (choice.view === `View All ${company[1]}`){       
+        else if (choice.view === `View All ${company[0]}` || `View All ${company[1]}`|| `View All ${company[2]}`){       
             erdQ();
 //user restarts app or is prompted to exit
                   (inquirer.prompt(continue_app)).then(ask)}
