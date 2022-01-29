@@ -30,7 +30,7 @@ const companyQ = () =>{
 });
 }
 const rolesQ = () =>{
-  con_db.query(`SELECT * FROM ${employees}, ${roles}, ${departments}`, function (err, results) {
+  con_db.query(`SELECT * FROM ${roles}`, function (err, results) {
   console.table(results);
 });
 }
@@ -81,7 +81,7 @@ const init = () =>{
                   }
                   else {console.log("use Ctrl+C return to exit!")}
                   })}
-        if (choice.view === "View All Roles"){
+        else if (choice.view === "View All Roles"){
                   rolesQ();
                   (inquirer.prompt(continue_app)).then((choice) =>{
                   if (choice.continue === "continue"){init()
