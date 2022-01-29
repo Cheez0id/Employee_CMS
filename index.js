@@ -28,19 +28,18 @@ const companyQ = () =>{
 });
 }
 
+
+//for asking the user if they want to continue or quit
 ask = ((choice) =>{
   if (choice.continue === "continue"){init()
   }
   else {console.log("use Ctrl+C return to exit!")}
   });
 
-//for debugging
-const hello = () => {console.log("work in progress!")}
-
 
 //todo: want to initialize with something like const start = () => {}
 
-
+//inquirer questions and choices
 const firstChoice = [
   {
 		type: "list",
@@ -58,7 +57,7 @@ const continue_app = [
     choices: ["continue", "exit"],
 	}
 ]
-//todo: thinking about adding a hook to make everything lowercase, so the person can enter in 
+
 const viewChoice = [
   {
 		type: "list",
@@ -71,14 +70,14 @@ const viewChoice = [
 const addChoice = [
   {
 		type: "list",
-		name: "view",
+		name: "add",
 		message: "What do you want to add?",
     choices: ["Add Role", "Add Employee", "Add Department"],
 	}
 ]
 
-const addEmployee = () => {console.log("hello")}; 
 
+//MAIN CODE BELOW
 const init = () =>{
   inquirer.prompt(firstChoice).then(
     (choice) =>{
@@ -116,6 +115,7 @@ const deptQ = () =>{
                   (inquirer.prompt(continue_app)).then(ask)}                   
       })}
   //for Adding data
+  const addEmployee = () => {console.log("hello")}; 
     if (choice.first === "Add"){
         inquirer.prompt(addChoice).then((choice) =>{
       if (choice.add === "Add Employee"){
