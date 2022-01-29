@@ -3,7 +3,7 @@
 A homework assignment to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
 ## Link To Video - PLEASE NOTE THIS WILL BE UPDATED AND DOES NOT SHOW ENTIRE CODE CURRENTLY
-[![Watch the video](https://avatars.githubusercontent.com/u/93955021?s=40&v=4)](https://drive.google.com/file/d/1aYx0xSfzkZUuU-5ad1DndoOaOqhTFsEU/view?usp=sharing)
+[![Watch the video](https://avatars.githubusercontent.com/u/93955021?s=40&v=4)](https://drive.google.com/file/d/1J0-E41t6bWYNpEfrK4-XPptSFJt6QI1o/view?usp=sharing)
 
 
 

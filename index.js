@@ -130,6 +130,7 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
   console.table(results); (inquirer.prompt(continue_app)).then(ask);
   })}
   ))}
+  
     //for Viewing data
       if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
