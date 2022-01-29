@@ -91,8 +91,8 @@ const newEmployee = [
   {
 		type: "list",
 		name: "roleId",
-		message: "What department",
-    choices: [010, 020, 030, 040],
+		message: "What role?",
+    choices: [10, 20, 30, 40],
 	},
   {
 		type: "list",
@@ -125,7 +125,7 @@ const deptQ = () =>{
 });
 };
 
-const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>{con_db.query(`INSERT INTO employees ( first_name, last_name, role_id, manager_id) VALUES (${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.mgr});`), function (err, results) {
+const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>{con_db.query(`INSERT INTO employees ( first_name, last_name, role_id, manager_id) VALUES ("${answers.firstName}", "${answers.lastName}", ${answers.roleId}, ${answers.mgr});`), function (err, results) {
   console.table(results);
   }
 }))}
