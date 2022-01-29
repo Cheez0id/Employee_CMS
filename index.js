@@ -64,7 +64,7 @@ const viewChoice = [
 		type: "list",
 		name: "view",
 		message: "What do you want to view?",
-    choices: ["View All", "View All Roles", "View All Employees", "View all Departments"],
+    choices: ["View All", "View All Roles", "View All Employees", "View All Departments"],
 	}
 ]
 
