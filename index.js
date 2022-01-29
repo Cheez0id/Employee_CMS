@@ -41,6 +41,15 @@ const firstChoice = [
     choices: ["View", "Add", "Update"],
 	}
 ]
+
+const continue_app = [
+  {
+		type: "list",
+		name: "continue",
+		message: "continue or exit?",
+    choices: ["continue", "exit"],
+	}
+]
 //todo: thinking about adding a hook to make everything lowercase, so the person can enter in 
 const viewChoice = [
   {
@@ -50,23 +59,30 @@ const viewChoice = [
     choices: ["View All Roles", "View All Employees", "View all Departments"],
 	}
 ]
+
+
 const init = () =>{
-  inquirer.prompt(firstChoice).then((choice) =>{
-      if(choice.first === undefined){
-      console.log("lol, it's undefined!")
-    }
-      else if (choice.first === "View" || "Add" || "Update"){
-        inquirer.prompt(viewChoice).then (employeeQ        
-  )
-      }
-      else if (choice.first === "Add"){
-        console.log("lol, add is not written yet!")
-      }
-      else if (choice.first === "Update"){
-        console.log("lol, update is not written yet!")
-      }
-  })
-}
+  inquirer.prompt(firstChoice).then(
+    (choice) =>{
+      if (choice.first === "View" || "Add" || "Update"){
+        inquirer.prompt(viewChoice).then((choice) =>{
+          if (choice.view === "View All Roles"){
+                  employeeQ();
+                  (inquirer.prompt(continue_app)).then((choice) =>{
+                  if (choice.continue === "continue"){init()
+                  }
+                  else {console.log("use Ctrl+C return to exit!")}
+                  })}})}})}
+    
+
+//       else if (choice.first === "Add"){
+//         console.log("lol, add is not written yet!")
+//       }
+//       else if (choice.first === "Update"){
+//         console.log("lol, update is not written yet!")
+//       }
+//   }))
+// }
 
 init();
 
