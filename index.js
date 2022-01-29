@@ -76,6 +76,38 @@ const addChoice = [
 	}
 ]
 
+const newEmployee = [
+  //TODO: use a number generator to crete unique employee ids
+  {
+		type: "input",
+		name: "id",
+		message: "id number?", 
+	},
+  {
+		type: "input",
+		name: "firstName",
+		message: "First Name?", 
+	},
+  {
+		type: "input",
+		name: "lastname",
+		message: "Last Name?", 
+	},
+  {
+		type: "list",
+		name: "dept",
+		message: "What department",
+    choices: ["customer service", "production", "sales", "quality"],
+	}
+  ,
+  {
+		type: "list",
+		name: "mgr",
+		message: "Manager's ID?",
+    choices: [52, 98, 27,]
+	}
+]
+
 
 //MAIN CODE BELOW
 const init = () =>{
@@ -115,17 +147,16 @@ const deptQ = () =>{
                   (inquirer.prompt(continue_app)).then(ask)}                   
       })}
   //for Adding data
-  const addEmployee = () => {
-    con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
-    VALUES (007, "James", "Bond", 010, 52)`, function (err, results) {
-    console.log("Bond!");
-  });
-  };; 
+  const addEmployee = () => {(inquirer.prompt(newEmployee))
+      .then(con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
+  VALUES (007, "James", "Bond", 010, 52)`, function (err, results) {
+      console.log("Bond!");
+      }))
+};
     if (choice.first === "Add"){
         inquirer.prompt(addChoice).then((choice) =>{
       if (choice.add === "Add Employee"){
-            addEmployee();
-                  (inquirer.prompt(continue_app)).then(ask)
+            addEmployee()
           }})}
 
 })}
