@@ -177,3 +177,14 @@ init();
 //----____----IGNORE BELOW----____----
 
 //from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
+
+//// ({const addEmployee = inquirer.prompt(newEmployee).then(answers);
+//   con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)` + `VALUES (${answers.id}, ${answers.firstName}, ${answers.lastName}, ${answers.dept}, ${answers.mgr})`, function (err, results) {
+//         console.log("Bond!");
+//         })
+//    });
+//     if (choice.first === "Add"){
+//         inquirer.prompt(addChoice).then((choice) =>{
+//       if (choice.add === "Add Employee"){
+//             addEmployee
+//           }})}
