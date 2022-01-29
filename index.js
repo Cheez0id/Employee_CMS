@@ -1,13 +1,29 @@
 const inquirer = require("inquirer");
+const mysql = require('mysql2');
+const sequelize = require('./config/connection');
 
+var con_db = mysql.createConnection({
+  host: "localhost",
+  user: process.env.DB_MARY,
+  password: process.env.DB_PW,
+  database: process.env.DB_SRC,
+});
 
-//!!TODO: MARY, READ ME FIRST HONEY! you need to make your mysql queries log in the console silly; then they can work with inquirer. you don't need anything to go to localhost?!?
+con_db.connect((err) => {
+  if (err){
+    throw err;
+  }
+  console.log('mysql is connected!')
+})
 
+con_db.query('SELECT * FROM employees', function (err, results) {
+  console.table(results);
+});
+
+//________________________
 //from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
 const hello = () => {console.log("work in progress!")}
 
-// THIS IS JUST FOR REFERENCE! 
-//console.table(["roles", "employees", "departments"]);
 
 
 //todo: wanted to initialize with const start = () => {}
@@ -47,4 +63,4 @@ const init = () =>{
   })
 }
 
-init();
+// init();
