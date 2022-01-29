@@ -73,8 +73,18 @@ const init = () =>{
     (choice) =>{
       const company = ["Employees", "Roles", "Departments"]
       //TODO: let the ${} be the = the selection from the user
-const erdQ = () =>{
+const employeeQ = () =>{
   con_db.query(`SELECT * FROM ${companyTables[0]}`, function (err, results) {
+  console.table(results);
+});
+};
+const roleQ = () =>{
+  con_db.query(`SELECT * FROM ${companyTables[1]}`, function (err, results) {
+  console.table(results);
+});
+};
+const deptQ = () =>{
+  con_db.query(`SELECT * FROM ${companyTables[2]}`, function (err, results) {
   console.table(results);
 });
 };
@@ -83,10 +93,15 @@ const erdQ = () =>{
           if (choice.view === "View All"){
                   companyQ();
                   (inquirer.prompt(continue_app)).then(ask)}
-        else if (choice.view === `View All ${company[0]}` || `View All ${company[1]}`|| `View All ${company[2]}`){       
-            erdQ();
-//user restarts app or is prompted to exit
+        else if (choice.view === `View All ${company[0]}`){       
+            employeeQ();
                   (inquirer.prompt(continue_app)).then(ask)}
+        else if (choice.view === `View All ${company[1]}`){       
+            roleQ();
+                  (inquirer.prompt(continue_app)).then(ask)} 
+        else if (choice.view === `View All ${company[2]}`){       
+            deptQ();
+                  (inquirer.prompt(continue_app)).then(ask)}                   
 })}})}
     
 
