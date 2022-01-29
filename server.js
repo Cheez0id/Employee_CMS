@@ -2,6 +2,7 @@ const express = require('express');
 const sequelize = require('./config/connection');
 const mysql = require('mysql2');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -13,4 +14,3 @@ sequelize.sync({force:true}).then(()=> {
 });
 
 
-//from the CMS_EMployess the mysql route for schema and seeds is source ./db/schema and source  /
