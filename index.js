@@ -1,7 +1,9 @@
+//import inquirer and mysql
+const connection = require('./config/connection');
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
-const sequelize = require('./config/connection');
 
+//login data hidden via .env
 var con_db = mysql.createConnection({
   host: "localhost",
   user: process.env.DB_MARY,
@@ -9,6 +11,7 @@ var con_db = mysql.createConnection({
   database: process.env.DB_SRC,
 });
 
+//connecting to mysql
 con_db.connect((err) => {
   if (err){
     throw err;
@@ -16,17 +19,18 @@ con_db.connect((err) => {
   console.log('mysql is connected!')
 })
 
-con_db.query('SELECT * FROM employees', function (err, results) {
+//run mysql database query 
+const employeeQ = () =>{
+  con_db.query('SELECT * FROM employees', function (err, results) {
   console.table(results);
 });
+}
 
-//________________________
-//from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
+//for debugging
 const hello = () => {console.log("work in progress!")}
 
 
-
-//todo: wanted to initialize with const start = () => {}
+//todo: want to initialize with something like const start = () => {}
 
 
 const firstChoice = [
@@ -37,6 +41,7 @@ const firstChoice = [
     choices: ["View", "Add", "Update"],
 	}
 ]
+//todo: thinking about adding a hook to make everything lowercase, so the person can enter in 
 const viewChoice = [
   {
 		type: "list",
@@ -50,8 +55,8 @@ const init = () =>{
       if(choice.first === undefined){
       console.log("lol, it's undefined!")
     }
-      else if (choice.first === "View"){
-        inquirer.prompt(viewChoice).then (hello        
+      else if (choice.first === "View" || "Add" || "Update"){
+        inquirer.prompt(viewChoice).then (employeeQ        
   )
       }
       else if (choice.first === "Add"){
@@ -63,4 +68,9 @@ const init = () =>{
   })
 }
 
-// init();
+init();
+
+
+//----____----IGNORE BELOW----____----
+
+//from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
