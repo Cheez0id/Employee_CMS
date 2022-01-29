@@ -2,6 +2,13 @@
 
 A homework assignment to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
+## TODO:
+need to create the inquirer prompts
+connect the database to the server.js?
+
+## DONE:
+database is created, as well as some seeds
+
 ## Acceptance Criteria
 
 ```md
