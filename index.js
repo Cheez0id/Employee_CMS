@@ -68,6 +68,17 @@ const viewChoice = [
 	}
 ]
 
+const addChoice = [
+  {
+		type: "list",
+		name: "view",
+		message: "What do you want to add?",
+    choices: ["Add Role", "Add Employee", "Add Department"],
+	}
+]
+
+const addEmployee = () => {console.log("hello")}; 
+
 const init = () =>{
   inquirer.prompt(firstChoice).then(
     (choice) =>{
@@ -88,9 +99,10 @@ const deptQ = () =>{
   console.table(results);
 });
 };
-      if (choice.first === "View" || "Add" || "Update"){
+    //for Viewing data
+      if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
-          if (choice.view === "View All"){
+      if (choice.view === "View All"){
                   companyQ();
                   (inquirer.prompt(continue_app)).then(ask)}
         else if (choice.view === `View All ${company[0]}`){       
@@ -102,7 +114,16 @@ const deptQ = () =>{
         else if (choice.view === `View All ${company[2]}`){       
             deptQ();
                   (inquirer.prompt(continue_app)).then(ask)}                   
-})}})}
+      })}
+  //for Adding data
+    if (choice.first === "Add"){
+        inquirer.prompt(addChoice).then((choice) =>{
+      if (choice.add === "Add Employee"){
+            addEmployee();
+                  (inquirer.prompt(continue_app)).then(ask)
+          }})}
+
+})}
     
 
 //       else if (choice.first === "Add"){
