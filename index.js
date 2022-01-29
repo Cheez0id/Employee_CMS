@@ -125,10 +125,11 @@ const deptQ = () =>{
 });
 };
 
-const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>{con_db.query(`INSERT INTO employees ( first_name, last_name, role_id, manager_id) VALUES ("${answers.firstName}", "${answers.lastName}", ${answers.roleId}, ${answers.mgr});`), function (err, results) {
-  console.table(results);
-  }
-}))}
+const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
+    {con_db.query((`INSERT INTO employees ( first_name, last_name, role_id, manager_id) VALUES ("${answers.firstName}", "${answers.lastName}", ${answers.roleId}, ${answers.mgr})`), function (err, results) {
+  console.table(results); (inquirer.prompt(continue_app)).then(ask);
+  })}
+  ))}
     //for Viewing data
       if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
@@ -146,8 +147,9 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>{con_db.
       else if (choice.first === "Add"){
           inquirer.prompt(addChoice).then((response) =>{
         if (response.add === "Add Employee"){
-              addEmployee()
-            }})}
+              addEmployee();
+            }}
+          )}
 })}
     
 
