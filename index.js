@@ -19,9 +19,13 @@ con_db.connect((err) => {
   console.log('mysql is connected!')
 })
 
+const employees = "employees";
+const roles = "roles";
+const departments = "departments";
+
 //run mysql database query 
-const employeeQ = () =>{
-  con_db.query('SELECT * FROM employees', function (err, results) {
+const companyQ = () =>{
+  con_db.query(`SELECT * FROM ${employees}, ${roles}, ${departments}`, function (err, results) {
   console.table(results);
 });
 }
@@ -67,7 +71,7 @@ const init = () =>{
       if (choice.first === "View" || "Add" || "Update"){
         inquirer.prompt(viewChoice).then((choice) =>{
           if (choice.view === "View All Roles"){
-                  employeeQ();
+                  companyQ();
                   (inquirer.prompt(continue_app)).then((choice) =>{
                   if (choice.continue === "continue"){init()
                   }
