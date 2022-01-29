@@ -22,11 +22,11 @@ con_db.connect((err) => {
 const companyTables = ["employees", "roles", "departments"]
 
 //run mysql database query 
-const companyQ = () =>{
-  con_db.query(`SELECT * FROM ${companyTables[0]}, ${companyTables[1]}, ${companyTables[2]}`, function (err, results) {
-  console.table(results);
-});
-}
+// const companyQ = () =>{
+//   con_db.query(`SELECT * FROM ${companyTables[0]}, ${companyTables[1]}, ${companyTables[2]}`, function (err, results) {
+//   console.table(results);
+// });
+// }
 
 
 //for asking the user if they want to continue or quit
@@ -63,7 +63,7 @@ const viewChoice = [
 		type: "list",
 		name: "view",
 		message: "What do you want to view?",
-    choices: ["View All", "View All Roles", "View All Employees", "View All Departments"],
+    choices: ["View All Roles", "View All Employees", "View All Departments"],
 	}
 ]
 
@@ -80,26 +80,20 @@ const newEmployee = [
   //TODO: use a number generator to crete unique employee ids
   {
 		type: "input",
-		name: "id",
-		message: "id number?", 
-	},
-  {
-		type: "input",
 		name: "firstName",
 		message: "First Name?", 
 	},
   {
 		type: "input",
-		name: "lastname",
+		name: "lastName",
 		message: "Last Name?", 
 	},
   {
 		type: "list",
-		name: "dept",
+		name: "roleId",
 		message: "What department",
-    choices: ["customer service", "production", "sales", "quality"],
-	}
-  ,
+    choices: [010, 020, 030, 040],
+	},
   {
 		type: "list",
 		name: "mgr",
@@ -130,13 +124,15 @@ const deptQ = () =>{
   console.table(results);
 });
 };
+
+const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>{con_db.query(`INSERT INTO employees ( first_name, last_name, role_id, manager_id) VALUES (${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.mgr});`), function (err, results) {
+  console.table(results);
+  }
+}))}
     //for Viewing data
       if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
-      if (choice.view === "View All"){
-                  companyQ();
-                  (inquirer.prompt(continue_app)).then(ask)}
-        else if (choice.view === `View All ${company[0]}`){       
+        if (choice.view === `View All ${company[0]}`){       
             employeeQ();
                   (inquirer.prompt(continue_app)).then(ask)}
         else if (choice.view === `View All ${company[1]}`){       
@@ -147,39 +143,25 @@ const deptQ = () =>{
                   (inquirer.prompt(continue_app)).then(ask)}                   
       })}
   //for Adding data
-  const addEmployee = () => {(inquirer.prompt(newEmployee))
-      .then(con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
-  VALUES (007, "James", "Bond", 010, 52)`, function (err, results) {
-      console.log("Bond!");
-      }))
-};
-    if (choice.first === "Add"){
-        inquirer.prompt(addChoice).then((choice) =>{
-      if (choice.add === "Add Employee"){
-            addEmployee()
-          }})}
-
+      else if (choice.first === "Add"){
+          inquirer.prompt(addChoice).then((response) =>{
+        if (response.add === "Add Employee"){
+              addEmployee()
+            }})}
 })}
     
 
-//       else if (choice.first === "Add"){
-//         console.log("lol, add is not written yet!")
-//       }
-//       else if (choice.first === "Update"){
-//         console.log("lol, update is not written yet!")
-//       }
-//   }))
-// }
-
 init();
+
+
 
 
 //----____----IGNORE BELOW----____----
 
 //from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
 
-//// ({const addEmployee = inquirer.prompt(newEmployee).then(answers);
-//   con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)` + `VALUES (${answers.id}, ${answers.firstName}, ${answers.lastName}, ${answers.dept}, ${answers.mgr})`, function (err, results) {
+// ({const addEmployee = inquirer.prompt(newEmployee).then(answers);
+//   con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)VALUES (${answers.id}, ${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.mgr})`, function (err, results) {
 //         console.log("Bond!");
 //         })
 //    });
@@ -188,3 +170,11 @@ init();
 //       if (choice.add === "Add Employee"){
 //             addEmployee
 //           }})}
+
+          
+
+        //   .then(con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
+        //   VALUES (007, "James", "Bond", 010, 52)`, function (err, results) {
+        //       console.log("Bond!");
+        //       }))
+        // };
