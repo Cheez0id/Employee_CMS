@@ -7,14 +7,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-var con = mysql.createConnection({
+var con_db = mysql.createConnection({
   host: "localhost",
   user: process.env.DB_MARY,
   password: process.env.DB_PW,
   database: process.env.DB_SRC,
 });
 
-con.connect((err) => {
+con_db.connect((err) => {
   if (err){
     throw err;
   }
@@ -24,8 +24,7 @@ con.connect((err) => {
 
 app.get('/api/company', (req, res) => {
   const sql = `SELECT * from employees`;
-  
-con.query(sql, (err, rows) => {
+  con_db.query(sql, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
        return;
@@ -36,6 +35,9 @@ con.query(sql, (err, rows) => {
     });
   });
 });
+
+
+
 
 //username/passwords hidden via sequelize using .env 
 sequelize.sync({force:false}).then(()=> {
