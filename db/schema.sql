@@ -4,14 +4,14 @@
   USE company_db;
 
 CREATE TABLE departments (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     dept_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
 
 
 CREATE TABLE roles (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     department INT,
     salary DECIMAL(4,2),

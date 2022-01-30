@@ -77,8 +77,7 @@ const addChoice = [
 ]
 
 const newEmployee = [
-  //TODO: use a number generator to crete unique employee ids
-  {
+    {
 		type: "input",
 		name: "firstName",
 		message: "First Name?", 
@@ -101,6 +100,12 @@ const newEmployee = [
     choices: [52, 98, 27,]
 	}
 ]
+
+const newDept = {
+		type: "input",
+		name: "deptName",
+		message: "What is the new Department?"
+}
 
 
 //MAIN CODE BELOW
@@ -130,7 +135,13 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
   console.table(results); (inquirer.prompt(continue_app)).then(ask);
   })}
   ))}
-  
+
+  const addDept = () => {(inquirer.prompt(newDept).then(answers =>
+    {con_db.query((`INSERT INTO departments (dept_name) VALUES ("${answers.deptName}")`), function (err, results) {
+      (inquirer.prompt(continue_app)).then(ask);
+  })}
+  ))}
+
     //for Viewing data
       if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
@@ -149,7 +160,11 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
           inquirer.prompt(addChoice).then((response) =>{
         if (response.add === "Add Employee"){
               addEmployee();
-            }}
+            }
+        if (response.add === "Add Department"){
+              addDept();
+            }
+          }
           )}
 })}
     
@@ -162,22 +177,3 @@ init();
 //----____----IGNORE BELOW----____----
 
 //from the CMS_Employess the mysql route for schema and seeds is source ./db/schema and source  
-
-// ({const addEmployee = inquirer.prompt(newEmployee).then(answers);
-//   con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)VALUES (${answers.id}, ${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.mgr})`, function (err, results) {
-//         console.log("Bond!");
-//         })
-//    });
-//     if (choice.first === "Add"){
-//         inquirer.prompt(addChoice).then((choice) =>{
-//       if (choice.add === "Add Employee"){
-//             addEmployee
-//           }})}
-
-          
-
-        //   .then(con_db.query(`INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
-        //   VALUES (007, "James", "Bond", 010, 52)`, function (err, results) {
-        //       console.log("Bond!");
-        //       }))
-        // };
