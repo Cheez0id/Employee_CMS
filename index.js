@@ -49,6 +49,12 @@ const firstChoice = [
 	}
 ]
 
+const employeeList = () =>{
+  con_db.query(`SELECT first_name, last_name FROM ${companyTables[0]}`, function (err, results) {
+  console.table(results);
+});
+};
+
 const continue_app = [
   {
 		type: "list",
@@ -191,6 +197,8 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
             }    
           }
           )}
+    else if (choice.first === "Update"){
+          employeeList()}{(inquirer.prompt(continue_app)).then(ask);}
 })}
     
 
