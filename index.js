@@ -45,7 +45,7 @@ const firstChoice = [
 		type: "list",
 		name: "first",
 		message: "Hello, what would you like to do?",
-    choices: ["View", "Add", "Update"],
+    choices: ["View", "Add", "Update Employee Role"],
 	}
 ]
 
@@ -197,8 +197,8 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
             }    
           }
           )}
-    else if (choice.first === "Update"){
-          employeeList()}{(inquirer.prompt(continue_app)).then(ask);}
+    else if (choice.first === "Update Employee Role"){
+          employeeList()}
 })}
     
 
