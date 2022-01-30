@@ -107,7 +107,22 @@ const newDept = {
 		message: "What is the new Department?"
 }
 
-
+const newRole = [{
+  type: "input",
+  name: "title",
+  message: "What is the new role?"
+},
+{
+  type: "number",
+  name: "salary",
+  message: `What is the salary? (enter "11.11")`
+},
+{
+  type: "number",
+  name: "department",
+  message: `What is the department?`
+},
+]
 //MAIN CODE BELOW
 const init = () =>{
   inquirer.prompt(firstChoice).then(
@@ -142,6 +157,12 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
   })}
   ))}
 
+  const addRole = () => {(inquirer.prompt(newRole).then(answers =>
+    {con_db.query((`INSERT INTO roles (title, salary) VALUES ("${answers.title}", "${answers.department}", "${answers.salary}")`), function (err, results) {
+      (inquirer.prompt(continue_app)).then(ask);
+  })}
+  ))}
+
     //for Viewing data
       if (choice.first === "View"){
         inquirer.prompt(viewChoice).then((choice) =>{
@@ -164,6 +185,9 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
         if (response.add === "Add Department"){
               addDept();
             }
+        if (response.add === "Add Role"){
+              addRole();
+            }    
           }
           )}
 })}
