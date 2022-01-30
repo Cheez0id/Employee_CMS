@@ -2,7 +2,7 @@
 
 A homework assignment to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
-## Link To Video - PLEASE NOTE THIS WILL BE UPDATED AND DOES NOT SHOW ENTIRE CODE CURRENTLY
+####Link To Video - PLEASE NOTE THIS WILL BE UPDATED AND DOES NOT SHOW ENTIRE CODE CURRENTLY
 [![Watch the video](https://avatars.githubusercontent.com/u/93955021?s=40&v=4)](https://drive.google.com/file/d/1J0-E41t6bWYNpEfrK4-XPptSFJt6QI1o/view?usp=sharing)
 
 
@@ -37,8 +37,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 ```
 
 ## Pseudocode from Jung
-```
-1) Start the Github repository
+>```1) Start the Github repository
 2) Make sure you have a .gitignore set to Node when you create the Github Repository
 3) Let's start by creating a package.json and downloading all the libraries you need = (Mysql2, Inquirer, console.table) [If you WANT to add express, go for it];
 4) Why not make a db folder and follow the instructions on the readme for the table columns?
@@ -54,6 +53,7 @@ THEN I am prompted to select an employee to update and their new role and this i
     8c) just getting the data, posting the data, updating or deleting the data, they must all first ACCESS the database right? How can we do that? What is the METHOD called?
 9) IN THE VIDEO, you'll notice that the choices are selectable, use the CHOICES method with inquirer for that. 
 ```
+
 ## Images from Assignment
 Design the database schema as shown in the following image:
 
