@@ -118,9 +118,10 @@ const newRole = [{
   message: `What is the salary? (enter "11.11")`
 },
 {
-  type: "number",
+  type: "list",
   name: "department",
-  message: `What is the department?`
+  message: `What is the department?`,
+  choices: [1, 2, 3, 4]
 },
 ]
 //MAIN CODE BELOW
@@ -158,7 +159,7 @@ const addEmployee = () => {(inquirer.prompt(newEmployee).then(answers =>
   ))}
 
   const addRole = () => {(inquirer.prompt(newRole).then(answers =>
-    {con_db.query((`INSERT INTO roles (title, salary) VALUES ("${answers.title}", "${answers.department}", "${answers.salary}")`), function (err, results) {
+    {con_db.query((`INSERT INTO roles (title, salary) VALUES ("${answers.title}", "${answers.salary}")`), function (err, results) {
       (inquirer.prompt(continue_app)).then(ask);
   })}
   ))}
