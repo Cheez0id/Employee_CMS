@@ -4,7 +4,7 @@ A homework assignment to create a command-line application from scratch to manag
 
 ####Link To Video- 
 
-![Watch the video](https://drive.google.com/file/d/1NSTo07dxxTOB-uQCsocjfNLQFtiy8Y08/view?usp=sharing)
+[Watch the video](https://drive.google.com/file/d/1NSTo07dxxTOB-uQCsocjfNLQFtiy8Y08/view?usp=sharing)
 
 
 
