@@ -19,7 +19,11 @@ con_db.connect((err) => {
   console.log('mysql is connected!')
 })
 
-const companyTables = ["employees", "roles", "departments"]
+const companyTables = ["employees", "roles", INSERT INTO categories (id, category_name)
+VALUES (1, "waffles"),
+       (2, "toys"),
+       (3, "houseware"),
+       (4, "spacedust");"departments"]
 
 //run mysql database query 
 // const companyQ = () =>{
